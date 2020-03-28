@@ -1,5 +1,6 @@
 package br.com.fiap.fiapcovid19.model;
 
+import io.swagger.models.auth.In;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,7 +11,7 @@ public class Doador {
     @Id
     private Integer id;
     private String nome;
-    private String tipoSanguineo;
+    private TipoSanguineo tipoSanguineo;
     private Integer cidade;
     private Integer UF;
     private Integer idade;
@@ -18,7 +19,7 @@ public class Doador {
     private String email;
     private Integer telefone;
 
-    public Doador(Integer id, String nome, String tipoSanguineo, Integer cidade, Integer UF, Integer idade, String cpf, String email, Integer telefone) {
+    public Doador(Integer id, String nome, TipoSanguineo tipoSanguineo, Integer cidade, Integer UF, Integer idade, String cpf, String email, Integer telefone) {
         this.id = id;
         this.nome = nome;
         this.tipoSanguineo = tipoSanguineo;
@@ -44,10 +45,10 @@ public class Doador {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getTipoSanguineo() {
+    public TipoSanguineo getTipoSanguineo() {
         return tipoSanguineo;
     }
-    public void setTipoSanguineo(String tipoSanguineo) {
+    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
     public Integer getCidade() {

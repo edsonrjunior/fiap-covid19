@@ -2,6 +2,7 @@ package br.com.fiap.fiapcovid19.controller;
 
 import br.com.fiap.fiapcovid19.dto.DoadorDTO;
 import br.com.fiap.fiapcovid19.model.Doador;
+import br.com.fiap.fiapcovid19.model.TipoSanguineo;
 import br.com.fiap.fiapcovid19.service.DoadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/doadores")
 public class DoadorController {
 
@@ -27,11 +29,25 @@ public class DoadorController {
         return ResponseEntity.created(uri).build();
     }
 
-    @RequestMapping(value="/{tipo}", method=RequestMethod.GET)
-    public ResponseEntity<List<DoadorDTO>> findByTipoSanguineo(@PathVariable String tipo){
-        List<Doador> list = service.findByTipoSanguineo(tipo);
+    @GetMapping(produces = "application/json")
+    public ResponseEntity<List<DoadorDTO>> findByTipoSanguineo(@RequestParam(required = false, value = "tipoSanguineo") TipoSanguineo tipoSanguineo){
+        List<Doador> list = service.findByTipoSanguineo(tipoSanguineo);
         List<DoadorDTO> listDTO = list.stream().map(x -> new DoadorDTO(x)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(listDTO);
+    }
+
+    @RequestMapping(method=RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody DoadorDTO doadorDTO){
+        Doador doador = service.fromDTO(doadorDTO);
+        doador = service.insert(doador);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(doador.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
