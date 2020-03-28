@@ -1,25 +1,28 @@
 package br.com.fiap.fiapcovid19.model;
 
+import io.swagger.models.auth.In;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection = "doador")
 public class Doador {
 
+    @Transient
+    public static final String SEQUENCE_NAME = "users_sequence";
+
     @Id
-    private Integer id;
+    private String cpf;
     private String nome;
-    private String tipoSanguineo;
+    private TipoSanguineo tipoSanguineo;
     private Integer cidade;
     private Integer UF;
     private Integer idade;
-    private String cpf;
     private String email;
     private String telefone;
 
-    public Doador(Integer id, String nome, String tipoSanguineo, Integer cidade, Integer UF, Integer idade, String cpf, String email, String telefone) {
-        this.id = id;
+    public Doador(String cpf, String nome, TipoSanguineo tipoSanguineo, Integer cidade, Integer UF, Integer idade, String email, String telefone) {
         this.nome = nome;
         this.tipoSanguineo = tipoSanguineo;
         this.cidade = cidade;
@@ -30,24 +33,16 @@ public class Doador {
         this.telefone = telefone;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getTipoSanguineo() {
+    public TipoSanguineo getTipoSanguineo() {
         return tipoSanguineo;
     }
-    public void setTipoSanguineo(String tipoSanguineo) {
+    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
     public Integer getCidade() {
@@ -86,4 +81,6 @@ public class Doador {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+
 }

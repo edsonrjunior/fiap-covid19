@@ -2,6 +2,7 @@ package br.com.fiap.fiapcovid19.service;
 
 import br.com.fiap.fiapcovid19.dto.DoadorDTO;
 import br.com.fiap.fiapcovid19.model.Doador;
+import br.com.fiap.fiapcovid19.model.TipoSanguineo;
 import br.com.fiap.fiapcovid19.repository.DoadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,8 @@ public class DoadorService {
     @Autowired
     private DoadorRepository repository;
 
-    public List<Doador> findByTipoSanguineo(String tipoSanguineo){
-        return repository.findByTipoSanguineo(tipoSanguineo);
+    public List<Doador> findByTipoSanguineoOrCidade(TipoSanguineo tipoSanguineo, Integer cidade){
+        return repository.findByTipoSanguineoOrCidade(tipoSanguineo, cidade);
     }
 
     public List<Doador> findByCidade(Integer cidade){
@@ -23,8 +24,7 @@ public class DoadorService {
     }
 
     public Doador insert(Doador user) {
-        return repository.insert(user);
-
+        return repository.save(user);
     }
 
     public void delete(Integer id) {
@@ -33,13 +33,12 @@ public class DoadorService {
     }
 
     public Doador fromDTO(DoadorDTO doadorDTO) {
-        return new Doador(doadorDTO.getId(),
+        return new Doador(doadorDTO.getCpf(),
                 doadorDTO.getNome(),
                 doadorDTO.getTipoSanguineo(),
                 doadorDTO.getCidade(),
                 doadorDTO.getUF(),
                 doadorDTO.getIdade(),
-                doadorDTO.getCpf(),
                 doadorDTO.getEmail(),
                 doadorDTO.getTelefone());
     }
