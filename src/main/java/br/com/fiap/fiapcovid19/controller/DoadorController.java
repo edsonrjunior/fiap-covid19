@@ -3,6 +3,7 @@ package br.com.fiap.fiapcovid19.controller;
 import br.com.fiap.fiapcovid19.dto.DoadorDTO;
 import br.com.fiap.fiapcovid19.model.Doador;
 import br.com.fiap.fiapcovid19.service.DoadorService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class DoadorController {
     @Autowired
     private DoadorService service;
 
+    @ApiOperation(value = "Cadastra novo doador")
     @RequestMapping(method=RequestMethod.POST)
     public ResponseEntity<Void> insert(@RequestBody DoadorDTO doadorDTO){
         Doador doador = service.fromDTO(doadorDTO);
@@ -27,6 +29,7 @@ public class DoadorController {
         return ResponseEntity.created(uri).build();
     }
 
+    @ApiOperation(value = "Lista doador por tipo sanguineo")
     @RequestMapping(value="/{tipo}", method=RequestMethod.GET)
     public ResponseEntity<List<DoadorDTO>> findByTipoSanguineo(@PathVariable String tipo){
         List<Doador> list = service.findByTipoSanguineo(tipo);
