@@ -1,15 +1,15 @@
 package br.com.fiap.fiapcovid19.dto;
 
 import br.com.fiap.fiapcovid19.model.Doador;
+import br.com.fiap.fiapcovid19.model.TipoSanguineo;
 
 import java.io.Serializable;
 
 public class DoadorDTO implements Serializable {
     private static final long serialVersionUID = -1L;
 
-    private Integer id;
     private String nome;
-    private String tipoSanguineo;
+    private TipoSanguineo tipoSanguineo;
     private Integer cidade;
     private Integer UF;
     private Integer idade;
@@ -21,7 +21,6 @@ public class DoadorDTO implements Serializable {
     }
 
     public DoadorDTO(Doador doador) {
-        this.id = doador.getId();
         this.nome = doador.getNome();
         this.tipoSanguineo = doador.getTipoSanguineo();
         this.cidade = doador.getCidade();
@@ -36,14 +35,6 @@ public class DoadorDTO implements Serializable {
         return serialVersionUID;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -52,11 +43,11 @@ public class DoadorDTO implements Serializable {
         this.nome = nome;
     }
 
-    public String getTipoSanguineo() {
+    public TipoSanguineo getTipoSanguineo() {
         return tipoSanguineo;
     }
 
-    public void setTipoSanguineo(String tipoSanguineo) {
+    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
 
