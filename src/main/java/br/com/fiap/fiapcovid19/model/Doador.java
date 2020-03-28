@@ -1,16 +1,13 @@
 package br.com.fiap.fiapcovid19.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Document(collection = "doador")
 public class Doador {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String tipoSanguineo;
