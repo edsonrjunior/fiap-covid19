@@ -36,10 +36,10 @@ public class DoadorController {
     @ApiOperation(value = "Lista doadores por Tipo Sanguíneo e Cidade")
     @GetMapping(produces = "application/json")
     public ResponseEntity<List<DoadorDTO>> findByTipoSanguineo(
-            @RequestParam(required = true, value = "tipoSanguineo") TipoSanguineo tipoSanguineo,
-            @RequestParam(required = true, value = "cidade") Integer cidade){
+            @RequestParam(required = false, value = "tipoSanguineo") TipoSanguineo tipoSanguineo,
+            @RequestParam(required = false, value = "cidade") Integer cidade){
 
-        List<Doador> list = service.findByTipoSanguineoOrCidade(tipoSanguineo, cidade);
+        List<Doador> list = service.findAll(tipoSanguineo, cidade);
         List<DoadorDTO> listDTO = list.stream().map(x -> new DoadorDTO(x)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(listDTO);
