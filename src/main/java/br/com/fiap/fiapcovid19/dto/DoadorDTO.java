@@ -1,15 +1,12 @@
-package br.com.fiap.fiapcovid19.model;
+package br.com.fiap.fiapcovid19.dto;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import br.com.fiap.fiapcovid19.model.Doador;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.io.Serializable;
 
-@Document(collection = "doador")
-public class Doador {
+public class DoadorDTO implements Serializable {
+    private static final long serialVersionUID = -1L;
 
-    @Id
     private Integer id;
     private String nome;
     private String tipoSanguineo;
@@ -19,6 +16,25 @@ public class Doador {
     private String cpf;
     private String email;
     private Integer telefone;
+
+    public DoadorDTO() {
+    }
+
+    public DoadorDTO(Doador doador) {
+        this.id = doador.getId();
+        this.nome = doador.getNome();
+        this.tipoSanguineo = doador.getTipoSanguineo();
+        this.cidade = doador.getCidade();
+        this.UF = doador.getUF();
+        this.idade = doador.getIdade();
+        this.cpf = doador.getCpf();
+        this.email = doador.getEmail();
+        this.telefone = doador.getTelefone();
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Integer getId() {
         return id;
@@ -31,48 +47,63 @@ public class Doador {
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public String getTipoSanguineo() {
         return tipoSanguineo;
     }
+
     public void setTipoSanguineo(String tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
+
     public Integer getCidade() {
         return cidade;
     }
+
     public void setCidade(Integer cidade) {
         this.cidade = cidade;
     }
+
     public Integer getUF() {
         return UF;
     }
+
     public void setUF(Integer UF) {
         this.UF = UF;
     }
+
     public Integer getIdade() {
         return idade;
     }
+
     public void setIdade(Integer idade) {
         this.idade = idade;
     }
+
     public String getCpf() {
         return cpf;
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public Integer getTelefone() {
         return telefone;
     }
+
     public void setTelefone(Integer telefone) {
         this.telefone = telefone;
     }
