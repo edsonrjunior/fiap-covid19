@@ -5,7 +5,11 @@ import br.com.fiap.fiapcovid19.model.Doador;
 import br.com.fiap.fiapcovid19.model.TipoSanguineo;
 import br.com.fiap.fiapcovid19.repository.DoadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -35,9 +39,10 @@ public class DoadorService {
         return repository.save(user);
     }
 
-    public void delete(Integer id) {
-        repository.findById(id);
-        repository.deleteById(id);
+    public void delete(String cpf) {
+
+        repository.deleteById(cpf);
+
     }
 
     public Doador fromDTO(DoadorDTO doadorDTO) {
@@ -49,5 +54,9 @@ public class DoadorService {
                 doadorDTO.getIdade(),
                 doadorDTO.getEmail(),
                 doadorDTO.getTelefone());
+    }
+
+    public Doador findById(String cpf) {
+        return repository.findById(cpf).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "CPF nao encontrado"));
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DoadorRepository extends MongoRepository<Doador, Integer> {
+public interface DoadorRepository extends MongoRepository<Doador, String> {
 
     @Query("{'tipoSanguineo' : ?0 , 'cidade' : ?1}")
     public List<Doador> findByTipoSanguineoOrCidade(TipoSanguineo tipoSanguineo, Integer cidade);
