@@ -18,7 +18,7 @@ public class DoadorService {
     }
 
 
-    public List<Doador> findByCidade(String cidade){
+    public List<Doador> findByCidade(Integer cidade){
         return repository.findByCidade(cidade);
     }
 }

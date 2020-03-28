@@ -1,9 +1,12 @@
 package br.com.fiap.fiapcovid19.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Document(collection = "doador")
 public class Doador {
 
     @Id
@@ -11,7 +14,8 @@ public class Doador {
     private Integer id;
     private String nome;
     private String tipoSanguineo;
-    private String cidade;
+    private Integer cidade;
+    private Integer UF;
     private String endereco;
     private Integer idade;
     private String cpf;
@@ -30,11 +34,17 @@ public class Doador {
     public void setTipoSanguineo(String tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
-    public String getCidade() {
+    public Integer getCidade() {
         return cidade;
     }
-    public void setCidade(String cidade) {
+    public void setCidade(Integer cidade) {
         this.cidade = cidade;
+    }
+    public Integer getUF() {
+        return UF;
+    }
+    public void setUF(Integer UF) {
+        this.UF = UF;
     }
     public String getEndereco() {
         return endereco;
