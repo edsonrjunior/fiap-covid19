@@ -33,6 +33,14 @@ public class DoadorService {
     }
 
     public Doador fromDTO(DoadorDTO doadorDTO) {
-        return new Doador(doadorDTO.getId(), doadorDTO.getNome(), doadorDTO.getTipoSanguineo(), doadorDTO.getCidade(), doadorDTO.getUF(), doadorDTO.getIdade(), doadorDTO.getCpf(), doadorDTO.getEmail(), doadorDTO.getTelefone());
+        return new Doador(doadorDTO.getId(),
+                doadorDTO.getNome(),
+                doadorDTO.getTipoSanguineo(),
+                doadorDTO.getCidade(),
+                doadorDTO.getUF(),
+                doadorDTO.getIdade(),
+                doadorDTO.getCpf(),
+                doadorDTO.getEmail(),
+                doadorDTO.getTelefone());
     }
 }
