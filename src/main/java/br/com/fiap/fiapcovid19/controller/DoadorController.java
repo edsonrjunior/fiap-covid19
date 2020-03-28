@@ -29,7 +29,7 @@ public class DoadorController {
     public ResponseEntity<Void> insert(@RequestBody DoadorDTO doadorDTO){
         Doador doador = service.fromDTO(doadorDTO);
         doador = service.insert(doador);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(doador.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{cpf}").buildAndExpand(doador.getCpf()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
@@ -46,7 +46,7 @@ public class DoadorController {
     public ResponseEntity<Void> update(@RequestBody DoadorDTO doadorDTO){
         Doador doador = service.fromDTO(doadorDTO);
         doador = service.insert(doador);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(doador.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{cpf}").buildAndExpand(doador.getCpf()).toUri();
         return ResponseEntity.created(uri).build();
     }
 

@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class DoadorDTO implements Serializable {
     private static final long serialVersionUID = -1L;
 
-    private Integer id;
     private String nome;
     private TipoSanguineo tipoSanguineo;
     private Integer cidade;
@@ -22,7 +21,6 @@ public class DoadorDTO implements Serializable {
     }
 
     public DoadorDTO(Doador doador) {
-        this.id = doador.getId();
         this.nome = doador.getNome();
         this.tipoSanguineo = doador.getTipoSanguineo();
         this.cidade = doador.getCidade();
@@ -35,14 +33,6 @@ public class DoadorDTO implements Serializable {
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNome() {

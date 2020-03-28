@@ -33,13 +33,12 @@ public class DoadorService {
     }
 
     public Doador fromDTO(DoadorDTO doadorDTO) {
-        return new Doador(doadorDTO.getId(),
+        return new Doador(doadorDTO.getCpf(),
                 doadorDTO.getNome(),
                 doadorDTO.getTipoSanguineo(),
                 doadorDTO.getCidade(),
                 doadorDTO.getUF(),
                 doadorDTO.getIdade(),
-                doadorDTO.getCpf(),
                 doadorDTO.getEmail(),
                 doadorDTO.getTelefone());
     }
