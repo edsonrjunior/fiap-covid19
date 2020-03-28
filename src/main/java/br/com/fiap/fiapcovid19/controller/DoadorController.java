@@ -45,8 +45,16 @@ public class DoadorController {
         return ResponseEntity.ok().body(listDTO);
     }
 
+    @ApiOperation(value = "Retorna o cadastro de um doador")
+    @GetMapping(produces = "application/json", value = "/{cpf}")
+    public ResponseEntity<DoadorDTO> findByTipoSanguineo(@PathVariable String cpf){
+
+        Doador doador = service.findById(cpf);
+        return ResponseEntity.ok().body(new DoadorDTO(doador));
+    }
+
     @ApiOperation(value = "Atualiza doador")
-    @RequestMapping(method=RequestMethod.PUT)
+    @RequestMapping(method=RequestMethod.PUT, value = "{cpf}")
     public ResponseEntity<Void> update(@RequestBody DoadorDTO doadorDTO){
         Doador doador = service.fromDTO(doadorDTO);
         doador = service.insert(doador);
@@ -55,9 +63,9 @@ public class DoadorController {
     }
 
     @ApiOperation(value = "Deleta doador")
-    @DeleteMapping(value="/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
-        service.delete(id);
+    @DeleteMapping("/{cpf}")
+    public ResponseEntity<Void> delete(@PathVariable String cpf) {
+        service.delete(cpf);
         return ResponseEntity.noContent().build();
     }
 }
