@@ -15,7 +15,7 @@ public class DoadorDTO implements Serializable {
     private Integer idade;
     private String cpf;
     private String email;
-    private Integer telefone;
+    private String telefone;
 
     public DoadorDTO() {
     }
@@ -91,11 +91,11 @@ public class DoadorDTO implements Serializable {
         this.email = email;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }

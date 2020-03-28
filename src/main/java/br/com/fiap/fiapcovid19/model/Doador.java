@@ -20,9 +20,9 @@ public class Doador {
     private Integer UF;
     private Integer idade;
     private String email;
-    private Integer telefone;
+    private String telefone;
 
-    public Doador(String cpf, String nome, TipoSanguineo tipoSanguineo, Integer cidade, Integer UF, Integer idade, String email, Integer telefone) {
+    public Doador(String cpf, String nome, TipoSanguineo tipoSanguineo, Integer cidade, Integer UF, Integer idade, String email, String telefone) {
         this.nome = nome;
         this.tipoSanguineo = tipoSanguineo;
         this.cidade = cidade;
@@ -75,10 +75,10 @@ public class Doador {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
