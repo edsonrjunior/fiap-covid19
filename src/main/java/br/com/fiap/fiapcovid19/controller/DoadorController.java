@@ -33,15 +33,19 @@ public class DoadorController {
         return ResponseEntity.created(uri).build();
     }
 
-    @ApiOperation(value = "Lista doadores por tipo sanguineo")
+    @ApiOperation(value = "Lista doadores por Tipo Sanguíneo e Cidade")
     @GetMapping(produces = "application/json")
-    public ResponseEntity<List<DoadorDTO>> findByTipoSanguineo(@RequestParam(required = false, value = "tipoSanguineo") TipoSanguineo tipoSanguineo){
-        List<Doador> list = service.findByTipoSanguineo(tipoSanguineo);
+    public ResponseEntity<List<DoadorDTO>> findByTipoSanguineo(
+            @RequestParam(required = true, value = "tipoSanguineo") TipoSanguineo tipoSanguineo,
+            @RequestParam(required = true, value = "cidade") Integer cidade){
+
+        List<Doador> list = service.findByTipoSanguineoOrCidade(tipoSanguineo, cidade);
         List<DoadorDTO> listDTO = list.stream().map(x -> new DoadorDTO(x)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(listDTO);
     }
 
+    @ApiOperation(value = "Atualiza doador")
     @RequestMapping(method=RequestMethod.PUT)
     public ResponseEntity<Void> update(@RequestBody DoadorDTO doadorDTO){
         Doador doador = service.fromDTO(doadorDTO);
@@ -50,6 +54,7 @@ public class DoadorController {
         return ResponseEntity.created(uri).build();
     }
 
+    @ApiOperation(value = "Deleta doador")
     @DeleteMapping(value="/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
