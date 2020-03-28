@@ -15,8 +15,8 @@ public class DoadorService {
     @Autowired
     private DoadorRepository repository;
 
-    public List<Doador> findByTipoSanguineo(TipoSanguineo tipoSanguineo){
-        return repository.findByTipoSanguineo(tipoSanguineo);
+    public List<Doador> findByTipoSanguineoOrCidade(TipoSanguineo tipoSanguineo, Integer cidade){
+        return repository.findByTipoSanguineoOrCidade(tipoSanguineo, cidade);
     }
 
     public List<Doador> findByCidade(Integer cidade){
