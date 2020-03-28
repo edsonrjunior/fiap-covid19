@@ -18,6 +18,18 @@ public class Doador {
     private String email;
     private Integer telefone;
 
+    public Doador(Integer id, String nome, String tipoSanguineo, Integer cidade, Integer UF, Integer idade, String cpf, String email, Integer telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.tipoSanguineo = tipoSanguineo;
+        this.cidade = cidade;
+        this.UF = UF;
+        this.idade = idade;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+    }
+
     public Integer getId() {
         return id;
     }
